@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Companion</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+    <!-- CSS -->
+    <link id="theme-style" rel="stylesheet" href="theme-ember.css">
+    <link rel="stylesheet" href="ai.css">
+</head>
+
+<body>
+
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+
+            <!-- ================= Sidebar ================= -->
+            <aside class="col-lg-3 col-md-4 sidebar">
+                <h2 class="logo">Luna Companion</h2>
+
+                <button id="newChatBtn" class="new-chat mb-3">
+                    <i class="bi bi-plus-lg me-1"></i> Đoạn chat mới
+                </button>
+
+                <div class="mb-2">
+                    <input type="text" id="searchHistory"
+                        class="form-control form-control-sm bg-transparent text-light border-secondary"
+                        placeholder="🔍 Tìm lịch sử...">
+                </div>
+
+                <div id="historyList" class="history-list"></div>
+
+                <button id="clearHistoryBtn" class="delete-btn mt-auto">
+                    <i class="bi bi-trash3-fill me-1"></i> Clear History
+                </button>
+            </aside>
+
+            <!-- ================= Main Content ================= -->
+            <main class="col-lg-9 col-md-8 main-content">
+
+                <!-- Header -->
+                <div class="chat-header">
+                    <div>
+                        <h3>Luna Companion</h3>
+                        <small>Your AI Companion & Roleplay Tutor</small>
+                    </div>
+                </div>
+
+                <!-- Chat Body -->
+                <section class="chat-body" id="chatBody"></section>
+
+                <!-- Footer / Input Area -->
+                <footer class="chat-footer">
+                    <input id="prompt" type="text" autocomplete="off" placeholder="Nhập tin nhắn hoặc mô tả ảnh...">
+
+                    <button id="sendBtn" class="btn btn-primary" title="Gửi tin nhắn">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+
+                    <button id="continueBtn" class="btn btn-outline-secondary" type="button">
+                        Tiếp
+                    </button>
+                </footer>
+
+            </main>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+    <script defer src="systemprompt.js"></script>
+    <script defer src="ai.js"></script>
+    <script defer src="theme-changer.js"></script>
+</body>
+
+</html>

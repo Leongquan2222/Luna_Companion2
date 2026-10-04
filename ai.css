@@ -1,0 +1,352 @@
+/* ==========================================
+   LUNA TUTOR - OCEAN EDITION (AI.CSS)
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg, #0f172a);
+    color: var(--text, #f8fafc);
+    overflow: hidden;
+    transition: background .45s ease, color .45s ease;
+}
+
+button,
+input {
+    font-family: inherit;
+    outline: none;
+    border: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary, #38bdf8);
+}
+
+img {
+    user-select: none;
+}
+
+/* =========================
+   APP CONTAINER & BLOBS
+========================= */
+.container-fluid {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, var(--gradient2, rgba(14, 165, 233, 0.15)), transparent 35%),
+        radial-gradient(circle at bottom right, var(--blob1, rgba(99, 102, 241, 0.15)), transparent 30%),
+        linear-gradient(135deg, var(--gradient1, #0f172a), var(--gradient2, #1e293b));
+}
+
+.row {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: var(--glass, rgba(30, 41, 59, 0.7));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-right: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text, #fff);
+    margin-bottom: 20px;
+}
+
+.new-chat {
+    width: 100%;
+    padding: 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--primary, #0284c7), var(--secondary, #6366f1));
+    color: #fff;
+    font-weight: 600;
+    transition: .25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+}
+
+.new-chat:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+.delete-btn {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-secondary, #94a3b8);
+    transition: .25s ease;
+}
+
+.delete-btn:hover {
+    color: #ff5d5d;
+    background: rgba(255, 0, 0, .1);
+}
+
+.history-list {
+    margin-top: 15px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 4px;
+}
+
+.history-item {
+    padding: 12px;
+    border-radius: 12px;
+    background: var(--card, rgba(51, 65, 85, 0.5));
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.08));
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.history-item:hover {
+    background: var(--surface, rgba(51, 65, 85, 0.8));
+    transform: translateX(2px);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-radius: 18px;
+    background: var(--glass, rgba(30, 41, 59, 0.7));
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    margin-bottom: 16px;
+}
+
+.chat-header h3 {
+    color: var(--text, #fff);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.chat-header small {
+    color: var(--text-secondary, #94a3b8);
+}
+
+.chat-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 18px;
+    background: var(--glass, rgba(30, 41, 59, 0.7));
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* =========================
+   MESSAGES & BUBBLES
+========================= */
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    animation: messageShow .3s ease-forward;
+}
+
+.message.user-message {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message.luna-message,
+.message.system-message {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.message .sender-title {
+    font-size: 12px;
+    color: var(--text-secondary, #94a3b8);
+    margin-bottom: 4px;
+}
+
+.message .msg-content {
+    padding: 14px 18px;
+    border-radius: 16px;
+    line-height: 1.6;
+    word-break: break-word;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.user-message .msg-content {
+    background: linear-gradient(135deg, var(--primary, #0284c7), var(--secondary, #6366f1));
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.luna-message .msg-content {
+    background: var(--card, #1e293b);
+    color: var(--text, #f8fafc);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    border-bottom-left-radius: 4px;
+}
+
+.system-message .msg-content {
+    background: transparent;
+    color: var(--text-secondary, #94a3b8);
+    font-style: italic;
+    box-shadow: none;
+    padding: 4px 8px;
+}
+
+/* =========================
+   GENERATED IMAGE STYLES
+========================= */
+.generated-image-container {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.generated-image-container p {
+    font-size: 13px;
+    color: var(--text-secondary, #94a3b8);
+    margin-bottom: 8px;
+}
+
+.generated-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.generated-image-container img:hover {
+    transform: scale(1.02);
+}
+
+.btn-download-img {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 16px;
+    font-size: 12px;
+    color: var(--primary, #38bdf8);
+    background-color: transparent;
+    border: 1px solid var(--primary, #38bdf8);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-download-img:hover {
+    background-color: var(--primary, #38bdf8);
+    color: #0f172a;
+}
+
+/* =========================
+   CHAT FOOTER / INPUT
+========================= */
+.chat-footer {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    background: var(--glass, rgba(30, 41, 59, 0.7));
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+    background: var(--surface, rgba(15, 23, 42, 0.6));
+    color: var(--text, #fff);
+    font-size: 15px;
+}
+
+.chat-footer button {
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s ease;
+}
+
+.chat-footer button:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes messageShow {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary, #0284c7);
+    border-radius: 10px;
+}

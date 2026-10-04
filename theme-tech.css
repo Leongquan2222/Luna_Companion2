@@ -1,0 +1,287 @@
+/* =========================================
+   AUTH STYLES - THEME EMBER VERSION
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg, #24171E);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text, #FFF5E8);
+}
+
+/* Khung auth container chính */
+.auth-container {
+    background-color: var(--surface, #321F28);
+    border-radius: 16px;
+    box-shadow: 0 14px 28px var(--shadow, rgba(0, 0, 0, 0.35)),
+        0 10px 10px var(--shadow, rgba(0, 0, 0, 0.22));
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    border: 1px solid var(--glass-border, rgba(231, 158, 79, 0.10));
+}
+
+/* Form Container */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.form-container form {
+    background-color: var(--surface, #321F28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.form-container h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: var(--accent, #E79E4F);
+    font-weight: 700;
+}
+
+/* Các ô Input */
+.input-group {
+    background-color: var(--card, #3B2530);
+    border: 1px solid var(--glass-border, rgba(231, 158, 79, 0.10));
+    border-radius: 10px;
+    margin: 8px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group:focus-within {
+    border-color: var(--accent, #E79E4F);
+}
+
+.input-group i {
+    color: var(--text-secondary, #D9C4AF);
+    margin-right: 12px;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    padding: 12px 5px;
+    width: 100%;
+    color: var(--text, #FFF5E8);
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group input::placeholder {
+    color: var(--text-secondary, #D9C4AF);
+    opacity: 0.7;
+}
+
+.forgot-pass {
+    color: var(--text-secondary, #D9C4AF);
+    font-size: 13px;
+    text-decoration: none;
+    margin: 10px 0 15px;
+    transition: color 0.3s;
+}
+
+.forgot-pass:hover {
+    color: var(--accent, #E79E4F);
+}
+
+/* Nút bấm */
+.btn-auth {
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary, #A05344), var(--accent, #E79E4F));
+    color: var(--text, #FFF5E8);
+    font-size: 13px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in, opacity 0.3s ease;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px var(--shadow, rgba(0, 0, 0, 0.35));
+}
+
+.btn-auth:hover {
+    opacity: 0.95;
+}
+
+.btn-auth:active {
+    transform: scale(0.95);
+}
+
+.btn-auth.ghost {
+    background: transparent;
+    border: 1.5px solid var(--text, #FFF5E8);
+    box-shadow: none;
+}
+
+/* Định vị form Đăng ký / Đăng nhập */
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Chuyển động dạng Slide */
+.auth-container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.auth-container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* Overlay hiệu ứng chuyển màu Ember */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.auth-container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: linear-gradient(135deg, var(--secondary, #734046), var(--primary, #A05344));
+    color: var(--text, #FFF5E8);
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.auth-container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--text, #FFF5E8);
+}
+
+.overlay-panel p {
+    font-size: 14px;
+    margin: 15px 0 25px;
+    line-height: 20px;
+    color: var(--text-secondary, #D9C4AF);
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.auth-container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .auth-container {
+        width: 92%;
+        min-height: 520px;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .sign-in-container,
+    .sign-up-container {
+        width: 100%;
+    }
+
+    .overlay-container {
+        display: none;
+    }
+
+    .auth-container.right-panel-active .sign-in-container {
+        display: none;
+    }
+
+    .auth-container.right-panel-active .sign-up-container {
+        transform: none;
+        position: relative;
+    }
+}
