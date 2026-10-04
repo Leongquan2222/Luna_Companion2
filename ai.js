@@ -4,7 +4,16 @@
 
 // --- CONFIG & CONSTANTS ---
 const APP_VERSION = 'v1_0';
-const COHERE_API_KEY = localStorage.getItem('cohere_key') || "cohere_3FMvXkYnpkxlSEfqNJmyaJl0co8rkpYLpAIEAEHW4TjKYI";
+const API_KEYS = [
+    "cohere_jqVF5E7TilGHaZcD4fXgIXCwySw20OQTjBlIE3It14bOH4",
+];
+let currentKey = 0;
+
+function getApiKey() {
+    const key = API_KEYS[currentKey];
+    currentKey = (currentKey + 1) % API_KEYS.length;
+    return key;
+}
 
 // --- ROLEPLAY & COMPANION SYSTEM PROMPT ---
 const sysPrompt = `
